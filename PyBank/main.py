@@ -23,9 +23,16 @@ with open(csvpath) as csvfile:
         monthTotal += 1
         profitLosses += int(row[1])
             
-        change = int(row[1]) - next(int(row[1]))
+        change = int(row[1])
         changes.append(change)
-        print(changes)
+
+
+    n = 0
+    j = 1
+    for values in changes:
+        print(int(changes[n]) - int(changes[j]))
+        n += 1
+        j += 1
 
 
     #Print out the Financial Analysis
