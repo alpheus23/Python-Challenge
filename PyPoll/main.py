@@ -30,6 +30,18 @@ with open(csvpath) as csvFile:
 
     for row in csvReader:
         totalVotes += 1
+
+        if row[2] == "Khan":
+            khanVotes += 1
+
+        elif row[2] == "Correy":
+            correyVotes += 1
+
+        elif row[2] == "Li":
+            liVotes += 1
+
+        else:
+            tooleyVotes += 1
     
 
 
