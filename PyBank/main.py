@@ -6,6 +6,7 @@ import csv
 monthTotal = 0
 profitLosses = 0
 changes = []
+months = []
 difference = 0.0
 differences = []
 averageChange = 0.0
@@ -29,7 +30,10 @@ with open(csvpath) as csvfile:
         change = int(row[1])
         changes.append(change)
 
-    print(f"{len(changes)}")
+        #Take the month value and put it into an array for later manipulation
+        month = row[0]
+        months.append(month)
+        print(f"{month}")
 
     #Declare variables to look through values in changes array
     n = 0
@@ -51,7 +55,6 @@ with open(csvpath) as csvfile:
     #print(differences)
     #Calculate the average of the changes in Profit/Losses
     averageChange = sum(differences) / len(differences)
-
 
     #Print out the Financial Analysis
     print(f"Total Months: {monthTotal}")
