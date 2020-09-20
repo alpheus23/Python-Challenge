@@ -2,9 +2,6 @@
 import os
 import csv
 
-#Imports numpy modules to search through arrays for specific values
-import numpy as np
-
 #Declare variables
 monthTotal = 0
 profitLosses = 0
@@ -60,13 +57,31 @@ with open(csvpath) as csvfile:
     #Find the index where the Greatest Decrease in Profits is stored
     minDiffIndex = differences.index(min(differences))
 
-    #print(differences)
     #Calculate the average of the changes in Profit/Losses
     averageChange = sum(differences) / len(differences)
 
     #Print out the Financial Analysis
+    print("Financial Analysis")
+    print("-------------------------------")
     print(f"Total Months: {monthTotal}")
     print(f"Total: ${profitLosses}")
     print(f"Average Change: ${averageChange:.2f}")
     print(f"Greatest Increase in Profits: {months[maxDiffIndex + 1]} ${max(differences)}")
     print(f"Greatest Decrease in Profits: {months[minDiffIndex + 1]} ${min(differences)}")
+
+    #Specify the file to write to  
+    outputPath = os.path.join("Analysis", "analysis.txt")
+
+    #Open the file using "write" mode. Specify the variable to hold the contents
+    with open(outputPath, 'w') as txtFile:
+
+        #Recreate Financial analysis table in a single variable and have that printed to txt file
+        outputTxt = ("Financial Analysis\n"
+                    "-----------------------------\n"
+                    f"Total Months: {monthTotal}\n"
+                    f"Total: ${profitLosses}\n"
+                    f"Average Change: ${averageChange:.2f}\n"
+                    f"Greatest Increase in Profits: {months[maxDiffIndex + 1]} ${max(differences)}\n"
+                    f"Greatest Decrease in Profits: {months[minDiffIndex + 1]} ${min(differences)}")
+        txtFile.write(outputTxt)
+        
