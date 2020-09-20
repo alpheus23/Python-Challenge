@@ -17,6 +17,9 @@ liPercent = 0.0
 tooleyVotes = 0
 tooleyPercent = 0.0
 
+popularVote = []
+winner = ""
+
 
 #Create os path to reach csv file
 csvpath = os.path.join("Resources", "election_data.csv")
@@ -50,6 +53,22 @@ correyPercent = (correyVotes / totalVotes) * 100
 liPercent = (liVotes / totalVotes) * 100
 tooleyPercent = (tooleyVotes / totalVotes) * 100
 
+#Put all vote counter into an array for later manipulation
+popularVote = [khanVotes, correyVotes, liVotes, tooleyVotes]
+
+#Ifelse statement to determine which variable has highest value, and assign corresponding candidate to winner
+if khanVotes == max(popularVote):
+    winner = "Khan"
+
+elif correyVotes == max(popularVote):
+    winner = "Correy"
+
+elif liVotes == max(popularVote):
+    winner = "Li"
+
+elif tooleyVotes == max(popularVote):
+    winner = "O'Tooley"
+
 #Print out Election Results
 print("Election Results")
 print("---------------------------")
@@ -59,3 +78,6 @@ print(f"Khan: {khanPercent:.2f}% ({khanVotes})")
 print(f"Correy: {correyPercent:.2f}% ({correyVotes})")
 print(f"Li: {liPercent:.2f}% ({liVotes})")
 print(f"O'Tooley: {tooleyPercent:.2f}% ({tooleyVotes})")
+print("---------------------------")
+print(f"Winner: {winner}")
+print("---------------------------")
