@@ -6,13 +6,22 @@ employeeCSV = os.path.join("PyBoss", "employee_data.csv")
 
 #Declare variables
 empID = []
+
 firstName = []
+first = ""
+
 lastName = []
+last = ""
+
 DOB = []
+date = ""
+month = ""
+day = ""
+year = ""
+
 SSN = []
 State = []
-first = ""
-last = ""
+
 
 #Open CSV file
 with open(employeeCSV) as csvFile:
@@ -30,11 +39,19 @@ with open(employeeCSV) as csvFile:
         first = row[1]
         firstName.append(first.split())
 
-        #Assign second value in firstName[] to secondName[]
+        #Break name row into a two index list with the first and last name in different indexes
         last = firstName.pop()
+
+        #Assign value at index[0] to firstName and value at index[1] to lastName
         firstName.append(last[0])
         lastName.append(last[1])
-    
+
+        #Split date value by using "-" as the seperator
+        date = row[2]
+        #date.split("-")
+        print(f"{date}")
+
 #print(f"{empID}")
-print(f"{firstName}")
-print(f"{lastName}")
+#print(f"{firstName}")
+#print(f"{lastName}")
+#print(f"{DOB}")
