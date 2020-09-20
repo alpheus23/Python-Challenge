@@ -2,6 +2,9 @@
 import os
 import csv
 
+#Imports numpy modules to search through arrays for specific values
+import numpy as np
+
 #Declare variables
 monthTotal = 0
 profitLosses = 0
@@ -33,7 +36,6 @@ with open(csvpath) as csvfile:
         #Take the month value and put it into an array for later manipulation
         month = row[0]
         months.append(month)
-        print(f"{month}")
 
     #Declare variables to look through values in changes array
     n = 0
@@ -52,6 +54,12 @@ with open(csvpath) as csvfile:
         if j > 85:
             break
 
+    #Find the index where the Greatest Increase in Profits is stored
+    maxDiffIndex = differences.index(max(differences))
+
+    #Find the index where the Greatest Decrease in Profits is stored
+    minDiffIndex = differences.index(min(differences))
+
     #print(differences)
     #Calculate the average of the changes in Profit/Losses
     averageChange = sum(differences) / len(differences)
@@ -60,5 +68,5 @@ with open(csvpath) as csvfile:
     print(f"Total Months: {monthTotal}")
     print(f"Total: ${profitLosses}")
     print(f"Average Change: ${averageChange:.2f}")
-    print(f"Greatest Increase in Profits: {max(differences)}")
-    print(f"Greatest Decrease in Profits: {min(differences)}")
+    print(f"Greatest Increase in Profits: {months[maxDiffIndex + 1]} ${max(differences)}")
+    print(f"Greatest Decrease in Profits: {months[minDiffIndex + 1]} ${min(differences)}")
