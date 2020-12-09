@@ -48,7 +48,7 @@ with open(employeeCSV) as csvFile:
 
         #Split date value by using "-" as the seperator
         date = row[2]
-        #date.split("-")
+        date.split("-")
         print(f"{date}")
 
 #print(f"{empID}")
